@@ -1,0 +1,59 @@
+#include <Servo.h>
+ 
+int Servo1Pin = 7;
+int Servo2Pin = 6;
+int Servo3Pin = 5;
+int Servo4Pin = 4;
+int Pot1 = A0;
+int Pot2 = A1;
+int Pot3 = A2;
+int Pot4 = A3;
+int Servo1_Min = 0;
+int Servo1_Max = 180;
+int Servo2_Min = 0;
+int Servo2_Max = 180;
+int Servo3_Min = 0;
+int Servo3_Max = 180;
+int Servo4_Min = 0;
+int Servo4_Max = 180;
+ 
+Servo Servo1;
+Servo Servo2;
+Servo Servo3;
+Servo Servo4;
+
+int Pot1Deger;
+int Servo1Pozisyon;
+int Pot2Deger;
+int Servo2Pozisyon;
+int Pot3Deger;
+int Servo3Pozisyon;
+int Pot4Deger;
+int Servo4Pozisyon;
+ 
+void setup()
+{
+  Servo1.attach(Servo1Pin);
+  Servo2.attach(Servo2Pin);
+  Servo3.attach(Servo3Pin);
+  Servo4.attach(Servo4Pin);
+}
+ 
+void loop()
+{
+  Pot1Deger  = analogRead(Pot1);
+  Pot2Deger  = analogRead(Pot2);
+  Pot3Deger  = analogRead(Pot3);
+  Pot4Deger  = analogRead(Pot4);
+  
+  Servo1Pozisyon  = map(Pot1Deger, 0, 1023, Servo1_Min , Servo1_Max);
+  Servo2Pozisyon  = map(Pot2Deger, 0, 1023, Servo2_Min , Servo2_Max);
+  Servo3Pozisyon  = map(Pot3Deger, 0, 1023, Servo3_Min , Servo3_Max);
+  Servo4Pozisyon  = map(Pot4Deger, 0, 1023, Servo4_Min , Servo4_Max);
+  
+  Servo1.write(Servo1Pozisyon);
+  Servo2.write(Servo2Pozisyon);
+  Servo3.write(Servo3Pozisyon);
+  Servo4.write(Servo4Pozisyon);
+  delay(20);
+}
